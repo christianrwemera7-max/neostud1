@@ -1,0 +1,14 @@
+rules_version = '2';
+
+// Attention : Ces règles sont permissives et adaptées au développement.
+// Pour la production, vous devriez restreindre l'accès, par exemple en
+// n'autorisant que les utilisateurs authentifiés à écrire dans leur propre dossier.
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Autorise la lecture et l'écriture de n'importe quel fichier
+    // par n'importe qui.
+    match /{allPaths=**} {
+      allow read, write;
+    }
+  }
+}
